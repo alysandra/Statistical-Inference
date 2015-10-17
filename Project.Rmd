@@ -1,0 +1,21 @@
+---
+title: "Project"
+output: html_document
+---
+Remember to convert to PDF after completion
+
+
+```{r}
+lambda <- 0.2
+sd=mean=1/lambda
+n=40
+
+```
+
+You can also embed plots, for example:
+
+```{r, echo=T}
+plot(cars)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
