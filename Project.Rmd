@@ -1,21 +1,48 @@
 ---
-title: "Project"
-output: html_document
+title: "Statistical Inference Simulation Project"
+By: Alysandra Toh
 ---
 Remember to convert to PDF after completion
 
+###Overview:
+To investigate the relationship between the exponential distribution in R and the Central Limit Theorom (CLT). There are 3 tasks: 
+1. Show the sample mean and compare it to the theoretical mean of the distribution.
+2. Show how variable the sample is (via variance) and compare it to the theoretical variance of the distribution.
+3. Show that the distribution is approximately normal.
+Which I hope to answer in order.
 
-```{r}
+First, to provide reproducibility for the random variables used. Then we set the base characteristics that was provided by the project guideline.
+
+```{r, intro}
+set.seed(16)
+
 lambda <- 0.2
 sd=mean=1/lambda
-n=40
+n<-40
+nosims<-1000
+data=rexp(n*nosims, lambda)
 
 ```
 
-You can also embed plots, for example:
+To simulate rexp(n, lambda) 1000 times, we will keep the data in a neat matrix.
+Then, to answer the question, we will find the sample mean of this simulation and compare it with the theoretical mean (1/lambda).
+
+```{r,cal1}
+exD<- matrix(data,nrow=nosims)
+exDmean<-apply(exD,1,mean)
+
+##The sample mean of the simulated mean will be:
+mean(exDmean)
+
+##while the theoretical mean is one over lambda, which is:
+print(mean)
+```
+To show it graphically, we will use a histogram, where the green dotted line is the simulated mean and  the blue is the theoretical. They are almost on top of each other and might be a bit difficult to see separately.
 
 ```{r, echo=T}
-plot(cars)
+hist(exDmean, xlab="Mean", main="Histogram of Simulated Exponential Means", col="grey"
+     )
+legend("topright", c("Simulated Mean", "Theoretical Mean"), text.col=c("green", "blue"))
+abline(v=mean, col="blue")
+abline(v=mean(exDmean),col="green", lty=2)
 ```
-
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
