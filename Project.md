@@ -40,13 +40,13 @@ print(mean)
 ```
 To show it graphically, we will use a histogram, where the green dotted line is the simulated mean and  the blue is the theoretical. They are almost on top of each other and might be a bit difficult to see separately, which is why I plotted the dotted line on top of the blue one.
 
-```{r, plot1}
+```{r}
 hist(exDmean, xlab="Mean", main="Histogram of Simulated Exponential Means", col="grey"
      )
 legend("topright", c("Simulated Mean", "Theoretical Mean"), text.col=c("green", "blue"))
 abline(v=mean, col="blue", lwd=2)
 abline(v=mean(exDmean),col="green", lty=2)
-```
+
 
 #Question 2
 
@@ -91,3 +91,7 @@ legend("topright", c("Simulated Distribution", "Theoretical Distribution"), text
 ```
 
 The shape of the theoretical mean distribution is a perfect bell shape, also known as the standard normal distribution, albeit centered around 5 rather than 0. The simulated data is a similar bell shape, with kinks close to 4 and 7, which is typical of true samples to not be perfect. Even so, the distribution is centered at the same point and will therefore be standard normal in nature. 
+
+
+library(pander)
+myReport$export()
